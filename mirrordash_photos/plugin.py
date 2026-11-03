@@ -289,9 +289,10 @@ class PhotosModule:
             return {}
 
     def save_state(self) -> None:
-        if self.state_file:
-            with open(self.state_file, "w", encoding="utf-8") as f:
+        if self.state_file:  # through a .tmp file: a power cut mid-write leaves the old file whole
+            with open(self.state_file + ".tmp", "w", encoding="utf-8") as f:
                 json.dump({**self.load_state(), self.source: self.position}, f)
+            os.replace(self.state_file + ".tmp", self.state_file)
 
 
 def list_folder(folder: str) -> list[dict]:
