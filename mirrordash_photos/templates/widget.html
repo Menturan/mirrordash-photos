@@ -1,6 +1,7 @@
 <!-- One photo. In a box it takes a part of the screen; in MirrorDash's Background (or Foreground) position
      the mirror sets --md-layer-size and it fills the screen. Black around a photo is glass on a mirror, so it
-     is shown whole (contain), never cropped. No script, nothing that moves but the fade-in of a new photo. -->
+     is shown whole (contain) unless the owner chose Fill the screen (cover: the edges cropped). No script,
+     nothing that moves but the fade-in of a new photo. -->
 <style>
     .photo-frame {
         position: relative;
@@ -16,6 +17,7 @@
         object-fit: contain;
         animation: photo-in 1.2s ease-out;
     }
+    .photo-frame.fill img { object-fit: cover; }
     @keyframes photo-in { from { opacity: 0; } }
     /* While a video plays the mirror pauses animations: a new photo would stay at the fade's start, unseen */
     :host([data-video-is-playing]) .photo-frame img { animation: none; }
@@ -42,7 +44,7 @@
 </style>
 
 {% if photo %}
-<div class="photo-frame{% if vignette %} vignette{% endif %}">
+<div class="photo-frame{% if vignette %} vignette{% endif %}{% if fill %} fill{% endif %}">
     <img src="{{ photo.url }}" alt="">
     {% if credit %}<span class="photo-credit">{{ credit }}</span>{% endif %}
 </div>

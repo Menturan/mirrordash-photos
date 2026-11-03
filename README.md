@@ -34,12 +34,13 @@ Unsplash, and each one shown is reported to Unsplash once, as its terms ask too.
 | :--- | :--- |
 | Seconds per Photo | How long each photo is shown (default 60). |
 | Order | Your own photos and Immich: by date taken, as added, or shuffled (each once before any again). |
+| Photo Size | Whole photo (the default): all of it, with black (glass) beside it. Fill the screen: fills the screen in Background, or the box, with the edges cropped. |
 | Darker Edges | Darkens the photo towards the edges, so text over it stays readable. Good in Background. |
 | Orientation | Unsplash and Pexels: only landscape or portrait photos, to match your screen. |
 | Opacity (the mirror's own setting) | How bright the photo is. Behind other modules, about 0.5–0.7 keeps the mirror a mirror. |
 
-A photo is shown whole, never cropped: on a two-way mirror the black around it is glass. A new photo fades
-in once; nothing else moves.
+A photo is shown whole unless you choose *Fill the screen*: on a two-way mirror the black around it is
+glass. A new photo fades in once; nothing else moves.
 
 ## Privacy
 

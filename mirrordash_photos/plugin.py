@@ -124,6 +124,7 @@ class PhotosModule:
         self.interval = max(int(config.get("interval") or 60), MIN_INTERVAL.get(self.source, 10))
         self.order = config.get("order", "name")
         self.vignette = bool(config.get("vignette", False))
+        self.fill = config.get("fit") == "cover"  # fill the box or screen, cropping the edges; else the whole photo
         self.api_path = config.get("api_path", "")
         self.timezone = config.get("globals", {}).get("timezone", "Europe/Stockholm")
         cache = config.get("cache_dir") or ""
@@ -152,7 +153,7 @@ class PhotosModule:
         if photo and photo.get("service"):  # the services' terms: the photographer, and where it's from
             credit = self.translate("credit", "Photo: {name} / {service}").format(
                 name=photo.get("by") or "–", service=photo["service"])
-        return self.render_template("widget.html", photo=photo, credit=credit, vignette=self.vignette,
+        return self.render_template("widget.html", photo=photo, credit=credit, vignette=self.vignette, fill=self.fill,
                                     message=message, icon=icon)
 
     async def next_photo(self) -> tuple[dict | None, str | None]:

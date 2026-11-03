@@ -33,6 +33,14 @@
       "title": "Order",
       "description": "For your own photos and Immich. By date taken uses the date the mirror puts first in an uploaded photo's name."
     },
+    "fit": {
+      "type": "string",
+      "default": "contain",
+      "enum": ["contain", "cover"],
+      "enum_titles": ["Whole photo", "Fill the screen"],
+      "title": "Photo Size",
+      "description": "Whole photo: all of it, with black (glass) beside it. Fill the screen: fills the screen (in Background) or the box, the edges cropped."
+    },
     "vignette": {
       "type": "boolean",
       "default": false,

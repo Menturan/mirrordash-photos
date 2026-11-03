@@ -185,3 +185,10 @@ async def test_an_unexpected_answer_keeps_the_card(tmp_path):
     module.fetch_json.return_value = ({"photos": [{"src": "not a dict"}]}, None)
     shown = await module.render()
     assert shown["photo"] is None and shown["message"]
+
+
+@pytest.mark.asyncio
+async def test_fill_the_screen_is_a_choice_and_the_whole_photo_the_default(tmp_path):
+    upload(tmp_path, "2026-01-02_a.jpg")
+    assert (await make_module(tmp_path).render())["fill"] is False
+    assert (await make_module(tmp_path, fit="cover").render())["fill"] is True
