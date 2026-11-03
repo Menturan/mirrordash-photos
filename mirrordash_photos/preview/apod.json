@@ -1,0 +1,15 @@
+[
+ {
+  "date": "2026-11-01",
+  "media_type": "video",
+  "url": "https://www.youtube.com/embed/sample",
+  "title": "A video"
+ },
+ {
+  "date": "2026-11-02",
+  "media_type": "image",
+  "url": "data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%201600%201000%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27s%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%270%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%27%20stop-color%3D%27%2305070f%27/%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27%231b2a4a%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%271600%27%20height%3D%271000%27%20fill%3D%27url%28%23s%29%27/%3E%3Ccircle%20cx%3D%271100%27%20cy%3D%27420%27%20r%3D%2780%27%20fill%3D%27%23fff1d0%27/%3E%3Cpath%20d%3D%27M0%20620%20L260%20420%20L470%20560%20L700%20380%20L940%20600%20L1180%20450%20L1600%20640%20V1000%20H0Z%27%20fill%3D%27%2310141f%27/%3E%3Cpath%20d%3D%27M0%20760%20Q400%20660%20800%20760%20T1600%20730%20V1000%20H0Z%27%20fill%3D%27%2306080d%27/%3E%3C/svg%3E",
+  "title": "A made-up night sky",
+  "copyright": "Sample Photographer"
+ }
+]

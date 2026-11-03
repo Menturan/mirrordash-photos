@@ -1,0 +1,52 @@
+<!-- One photo. In a box it takes a part of the screen; in MirrorDash's Background (or Foreground) position
+     the mirror sets --md-layer-size and it fills the screen. Black around a photo is glass on a mirror, so it
+     is shown whole (contain), never cropped. No script, nothing that moves but the fade-in of a new photo. -->
+<style>
+    .photo-frame {
+        position: relative;
+        width: var(--md-layer-size, min(45vw, 720px));
+        height: var(--md-layer-size, auto);
+        aspect-ratio: 4 / 3;  /* a box's shape; ignored once a layer gives both sides */
+        overflow: hidden;
+    }
+    .photo-frame img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        animation: photo-in 1.2s ease-out;
+    }
+    @keyframes photo-in { from { opacity: 0; } }
+    /* While a video plays the mirror pauses animations: a new photo would stay at the fade's start, unseen */
+    :host([data-video-is-playing]) .photo-frame img { animation: none; }
+    /* Darker towards the edges, where the other modules' text sits */
+    .photo-frame.vignette::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.85) 100%);
+    }
+    .photo-credit {
+        position: absolute;
+        right: 12px;
+        bottom: 8px;
+        z-index: 1;
+        max-width: calc(100% - 24px);
+        font-size: 12px;
+        color: var(--color-standard-gray);
+        text-shadow: 0 0 4px #000;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+</style>
+
+{% if photo %}
+<div class="photo-frame{% if vignette %} vignette{% endif %}">
+    <img src="{{ photo.url }}" alt="">
+    {% if credit %}<span class="photo-credit">{{ credit }}</span>{% endif %}
+</div>
+{% endif %}
+{% if message %}
+<div class="module-message"><i data-lucide="{{ icon }}"></i><span>{{ message }}</span></div>
+{% endif %}

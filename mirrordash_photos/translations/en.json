@@ -1,0 +1,10 @@
+{
+  "title": "Photos",
+  "no_photos": "No photos yet. Add some in the module's settings.",
+  "missing_key": "Add the service's API key in the module's settings.",
+  "missing_immich": "Add Immich's address, an API key and an album in the module's settings.",
+  "key_rejected": "The service rejected the key. Check it in the module's settings.",
+  "offline": "Can't reach the photos.",
+  "fetch_failed": "Couldn't get the photos.",
+  "credit": "Photo: {name} / {service}"
+}

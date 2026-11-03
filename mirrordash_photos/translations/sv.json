@@ -1,0 +1,10 @@
+{
+  "title": "Bilder",
+  "no_photos": "Inga bilder än. Lägg till några i modulens inställningar.",
+  "missing_key": "Lägg till tjänstens API-nyckel i modulens inställningar.",
+  "missing_immich": "Lägg till Immichs adress, en API-nyckel och ett album i modulens inställningar.",
+  "key_rejected": "Tjänsten godkände inte nyckeln. Kontrollera den i modulens inställningar.",
+  "offline": "Når inte bilderna.",
+  "fetch_failed": "Kunde inte hämta bilderna.",
+  "credit": "Foto: {name} / {service}"
+}

@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Photos",
+  "description": "A slideshow of your own photos, Immich, Unsplash, Pexels, or NASA's or Wikimedia's picture of the day. Put it in Background to show it behind the other modules.",
+  "type": "object",
+  "properties": {
+    "source": {
+      "type": "string",
+      "default": "uploaded",
+      "enum": ["uploaded", "immich", "unsplash", "pexels", "apod", "wikimedia"],
+      "enum_titles": ["Photos uploaded here", "Immich", "Unsplash", "Pexels", "NASA: Astronomy Picture of the Day", "Wikimedia: Picture of the Day"],
+      "title": "Source",
+      "description": "Where the photos come from. The settings for the other sources are left as they are."
+    },
+    "photos": {
+      "format": "files",
+      "accept": "image",
+      "max_files": 500,
+      "title": "Photos",
+      "description": "For the source Photos uploaded here. They are shrunk to the mirror's screen on your phone before they're sent, without their location, and they aren't in backups."
+    },
+    "interval": {
+      "type": "integer",
+      "default": 60,
+      "title": "Seconds per Photo",
+      "description": "How long each photo is shown. Unsplash: 90 at least. The pictures of the day change once a day."
+    },
+    "order": {
+      "type": "string",
+      "default": "name",
+      "enum": ["name", "uploaded", "random"],
+      "enum_titles": ["By date taken", "As added", "Shuffled"],
+      "title": "Order",
+      "description": "For your own photos and Immich. By date taken uses the date the mirror puts first in an uploaded photo's name."
+    },
+    "vignette": {
+      "type": "boolean",
+      "default": false,
+      "title": "Darker Edges",
+      "description": "Darkens the photo towards the edges, so the other modules' text stays readable over it. Brightness: the Opacity setting below."
+    },
+    "orientation": {
+      "type": "string",
+      "default": "any",
+      "enum": ["any", "landscape", "portrait"],
+      "enum_titles": ["Any", "Landscape", "Portrait"],
+      "title": "Orientation",
+      "description": "Unsplash and Pexels (with a search): only photos of this shape, to match your screen."
+    },
+    "immich_url": {
+      "type": "string",
+      "format": "lan-url",
+      "default": "http://192.168.1.10:2283",
+      "title": "Immich Address",
+      "description": "Your Immich server, as you open it in a browser at home."
+    },
+    "immich_key": {
+      "type": "string",
+      "format": "password",
+      "default": "",
+      "title": "Immich API Key",
+      "description": "In Immich: your account → Account Settings → API Keys → New API Key."
+    },
+    "immich_mode": {
+      "type": "string",
+      "default": "album",
+      "enum": ["album", "random", "memories"],
+      "enum_titles": ["An album", "Random photos", "Memories (this day, years ago)"],
+      "title": "Immich Photos",
+      "description": "Which of your Immich photos to show."
+    },
+    "immich_album": {
+      "type": "string",
+      "default": "",
+      "title": "Immich Album ID",
+      "description": "For An album: open the album in Immich, the ID is the last part of the address."
+    },
+    "unsplash_key": {
+      "type": "string",
+      "format": "password",
+      "default": "",
+      "title": "Unsplash Access Key",
+      "description": "From unsplash.com/developers: New Application, then its Access Key."
+    },
+    "unsplash_query": {
+      "type": "string",
+      "default": "",
+      "title": "Unsplash Search",
+      "description": "Words for the photos, like nature or northern lights. Empty: any photo."
+    },
+    "unsplash_collections": {
+      "type": "string",
+      "default": "",
+      "title": "Unsplash Collections",
+      "description": "Collection IDs, separated by commas, instead of a search."
+    },
+    "pexels_key": {
+      "type": "string",
+      "format": "password",
+      "default": "",
+      "title": "Pexels API Key",
+      "description": "From pexels.com/api: Your API Key."
+    },
+    "pexels_query": {
+      "type": "string",
+      "default": "",
+      "title": "Pexels Search",
+      "description": "Words for the photos. Empty: Pexels' own picks."
+    },
+    "nasa_key": {
+      "type": "string",
+      "format": "password",
+      "default": "",
+      "title": "NASA API Key",
+      "description": "Optional, from api.nasa.gov. Without one a shared demo key is used, which is often enough."
+    }
+  },
+  "required": ["source"]
+}

@@ -1,0 +1,9 @@
+{
+  "captured": "2026-11-02",
+  "answers": {
+    "api.unsplash.com/photos/random": "unsplash.json",
+    "api.pexels.com/v1/*": "pexels.json",
+    "api.nasa.gov/planetary/apod": "apod.json",
+    "api.wikimedia.org/feed/v1/wikipedia/en/featured/*": "wikimedia.json"
+  }
+}
