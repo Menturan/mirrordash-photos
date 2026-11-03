@@ -1,6 +1,6 @@
 [project]
 name = "mirrordash-photos"
-version = "0.1.0"
+version = "1.0.0"
 description = "A photo slideshow: your own photos, Immich, Unsplash, Pexels, NASA's or Wikimedia's picture of the day"
 requires-python = ">=3.14"
 license = "MIT"  # LICENSE: yours to change; the template it came from asks nothing (MIT-0)
