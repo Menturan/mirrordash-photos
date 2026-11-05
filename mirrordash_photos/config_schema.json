@@ -17,13 +17,40 @@
       "accept": "image",
       "max_files": 500,
       "title": "Photos",
-      "description": "For the source Photos uploaded here. They are shrunk to the mirror's screen on your phone before they're sent, without their location, and they aren't in backups."
+      "description": "They are shrunk to the mirror's screen on your phone before they're sent, without their location, and they aren't in backups.",
+      "show_if": {"source": ["uploaded"]}
     },
-    "interval": {
-      "type": "integer",
-      "default": 60,
-      "title": "Seconds per Photo",
-      "description": "How long each photo is shown. Unsplash: 90 at least. The pictures of the day change once a day."
+    "immich_url": {
+      "type": "string",
+      "format": "lan-url",
+      "default": "http://192.168.1.10:2283",
+      "title": "Address",
+      "description": "Your Immich server, as you open it in a browser at home.",
+      "show_if": {"source": ["immich"]}
+    },
+    "immich_key": {
+      "type": "string",
+      "format": "password",
+      "default": "",
+      "title": "API Key",
+      "description": "In Immich: your account → Account Settings → API Keys → New API Key.",
+      "show_if": {"source": ["immich"]}
+    },
+    "immich_mode": {
+      "type": "string",
+      "default": "album",
+      "enum": ["album", "random", "memories"],
+      "enum_titles": ["An album", "Random photos", "Memories (this day, years ago)"],
+      "title": "Photos",
+      "description": "Which of your Immich photos to show.",
+      "show_if": {"source": ["immich"]}
+    },
+    "immich_album": {
+      "type": "string",
+      "default": "",
+      "title": "Album ID",
+      "description": "For An album: open the album in Immich, the ID is the last part of the address.",
+      "show_if": {"source": ["immich"]}
     },
     "order": {
       "type": "string",
@@ -31,7 +58,68 @@
       "enum": ["name", "uploaded", "random"],
       "enum_titles": ["By date taken", "As added", "Shuffled"],
       "title": "Order",
-      "description": "For your own photos and Immich. By date taken uses the date the mirror puts first in an uploaded photo's name."
+      "description": "By date taken uses the date the mirror puts first in an uploaded photo's name.",
+      "show_if": {"source": ["uploaded", "immich"]}
+    },
+    "unsplash_key": {
+      "type": "string",
+      "format": "password",
+      "default": "",
+      "title": "Access Key",
+      "description": "From unsplash.com/developers: New Application, then its Access Key.",
+      "show_if": {"source": ["unsplash"]}
+    },
+    "unsplash_query": {
+      "type": "string",
+      "default": "",
+      "title": "Search",
+      "description": "Words for the photos, like nature or northern lights. Empty: any photo.",
+      "show_if": {"source": ["unsplash"]}
+    },
+    "unsplash_collections": {
+      "type": "string",
+      "default": "",
+      "title": "Collections",
+      "description": "Collection IDs, separated by commas, instead of a search.",
+      "show_if": {"source": ["unsplash"]}
+    },
+    "pexels_key": {
+      "type": "string",
+      "format": "password",
+      "default": "",
+      "title": "API Key",
+      "description": "From pexels.com/api: Your API Key.",
+      "show_if": {"source": ["pexels"]}
+    },
+    "pexels_query": {
+      "type": "string",
+      "default": "",
+      "title": "Search",
+      "description": "Words for the photos. Empty: Pexels' own picks.",
+      "show_if": {"source": ["pexels"]}
+    },
+    "orientation": {
+      "type": "string",
+      "default": "any",
+      "enum": ["any", "landscape", "portrait"],
+      "enum_titles": ["Any", "Landscape", "Portrait"],
+      "title": "Orientation",
+      "description": "Only photos of this shape (Pexels: with a search only), to match your screen.",
+      "show_if": {"source": ["unsplash", "pexels"]}
+    },
+    "nasa_key": {
+      "type": "string",
+      "format": "password",
+      "default": "",
+      "title": "API Key",
+      "description": "Optional, from api.nasa.gov. Without one a shared demo key is used, which is often enough.",
+      "show_if": {"source": ["apod"]}
+    },
+    "interval": {
+      "type": "integer",
+      "default": 60,
+      "title": "Seconds per Photo",
+      "description": "How long each photo is shown. Unsplash: 90 at least. The pictures of the day change once a day."
     },
     "fit": {
       "type": "string",
@@ -46,81 +134,6 @@
       "default": false,
       "title": "Darker Edges",
       "description": "Darkens the photo towards the edges, so the other modules' text stays readable over it. Brightness: the Opacity setting below."
-    },
-    "orientation": {
-      "type": "string",
-      "default": "any",
-      "enum": ["any", "landscape", "portrait"],
-      "enum_titles": ["Any", "Landscape", "Portrait"],
-      "title": "Orientation",
-      "description": "Unsplash and Pexels (with a search): only photos of this shape, to match your screen."
-    },
-    "immich_url": {
-      "type": "string",
-      "format": "lan-url",
-      "default": "http://192.168.1.10:2283",
-      "title": "Immich Address",
-      "description": "Your Immich server, as you open it in a browser at home."
-    },
-    "immich_key": {
-      "type": "string",
-      "format": "password",
-      "default": "",
-      "title": "Immich API Key",
-      "description": "In Immich: your account → Account Settings → API Keys → New API Key."
-    },
-    "immich_mode": {
-      "type": "string",
-      "default": "album",
-      "enum": ["album", "random", "memories"],
-      "enum_titles": ["An album", "Random photos", "Memories (this day, years ago)"],
-      "title": "Immich Photos",
-      "description": "Which of your Immich photos to show."
-    },
-    "immich_album": {
-      "type": "string",
-      "default": "",
-      "title": "Immich Album ID",
-      "description": "For An album: open the album in Immich, the ID is the last part of the address."
-    },
-    "unsplash_key": {
-      "type": "string",
-      "format": "password",
-      "default": "",
-      "title": "Unsplash Access Key",
-      "description": "From unsplash.com/developers: New Application, then its Access Key."
-    },
-    "unsplash_query": {
-      "type": "string",
-      "default": "",
-      "title": "Unsplash Search",
-      "description": "Words for the photos, like nature or northern lights. Empty: any photo."
-    },
-    "unsplash_collections": {
-      "type": "string",
-      "default": "",
-      "title": "Unsplash Collections",
-      "description": "Collection IDs, separated by commas, instead of a search."
-    },
-    "pexels_key": {
-      "type": "string",
-      "format": "password",
-      "default": "",
-      "title": "Pexels API Key",
-      "description": "From pexels.com/api: Your API Key."
-    },
-    "pexels_query": {
-      "type": "string",
-      "default": "",
-      "title": "Pexels Search",
-      "description": "Words for the photos. Empty: Pexels' own picks."
-    },
-    "nasa_key": {
-      "type": "string",
-      "format": "password",
-      "default": "",
-      "title": "NASA API Key",
-      "description": "Optional, from api.nasa.gov. Without one a shared demo key is used, which is often enough."
     }
   },
   "required": ["source"]
