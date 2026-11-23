@@ -1,6 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Photos",
+  "requires_mirrordash": "0.13",
   "description": "A slideshow of your own photos, Immich, Unsplash, Pexels, or NASA's or Wikimedia's picture of the day. Put it in Background to show it behind the other modules.",
   "type": "object",
   "properties": {
