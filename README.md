@@ -32,10 +32,11 @@ Unsplash, and each one shown is reported to Unsplash once, as its terms ask too.
 
 | Setting | |
 | :--- | :--- |
-| Seconds per Photo | How long each photo is shown (default 60). |
+| Time per photo | How long each photo is shown (default 60). |
 | Order | Your own photos and Immich: by date taken, as added, or shuffled (each once before any again). |
-| Photo Size | Whole photo (the default): all of it, with black (glass) beside it. Fill the screen: fills the screen in Background, or the box, with the edges cropped. |
-| Darker Edges | Darkens the photo towards the edges, so text over it stays readable. Good in Background. |
+| Photo size | Whole photo (the default): all of it, with black (glass) beside it. Fill the screen: fills the screen in Background, or the box, with the edges cropped. |
+| Darker edges | Darkens the photo towards the edges, so text over it stays readable. Good in Background. |
+| Width (the mirror's own setting) | Starts at 40 % of the screen in a normal position; in Background or Foreground the photo fills the screen. |
 | Orientation | Unsplash and Pexels: only landscape or portrait photos, to match your screen. |
 | Opacity (the mirror's own setting) | How bright the photo is. Behind other modules, about 0.5–0.7 keeps the mirror a mirror. |
 

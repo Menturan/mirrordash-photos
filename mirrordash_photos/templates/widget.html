@@ -5,7 +5,8 @@
 <style>
     .photo-frame {
         position: relative;
-        width: var(--md-layer-size, min(45vw, 720px));
+        width: var(--md-layer-size, 100%);  /* the card is as wide as the module's width setting */
+        max-width: 100%;
         height: var(--md-layer-size, auto);
         aspect-ratio: 4 / 3;  /* a box's shape; ignored once a layer gives both sides */
         overflow: hidden;

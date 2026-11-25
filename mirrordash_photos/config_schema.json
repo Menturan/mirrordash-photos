@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Photos",
-  "requires_mirrordash": "0.13",
+  "requires_mirrordash": "0.21",
   "description": "A slideshow of your own photos, Immich, Unsplash, Pexels, or NASA's or Wikimedia's picture of the day.",
   "help": "Put it in Background to show it behind the other modules.",
   "type": "object",
@@ -34,7 +34,7 @@
       "type": "string",
       "format": "password",
       "default": "",
-      "title": "API Key",
+      "title": "API key",
       "description": "In Immich: your account → Account Settings → API Keys → New API Key.",
       "show_if": {"source": ["immich"]}
     },
@@ -43,7 +43,7 @@
       "default": "album",
       "enum": ["album", "random", "memories"],
       "enum_titles": ["An album", "Random photos", "Memories (this day, years ago)"],
-      "title": "Photos",
+      "title": "Which photos",
       "description": "Which of your Immich photos to show.",
       "show_if": {"source": ["immich"]}
     },
@@ -67,8 +67,8 @@
       "type": "string",
       "format": "password",
       "default": "",
-      "title": "Access Key",
-      "description": "From unsplash.com/developers: New Application, then its Access Key.",
+      "title": "API key",
+      "description": "The Access Key from unsplash.com/developers: New Application, then its Access Key.",
       "show_if": {"source": ["unsplash"]}
     },
     "unsplash_query": {
@@ -89,7 +89,7 @@
       "type": "string",
       "format": "password",
       "default": "",
-      "title": "API Key",
+      "title": "API key",
       "description": "From pexels.com/api: Your API Key.",
       "show_if": {"source": ["pexels"]}
     },
@@ -113,30 +113,32 @@
       "type": "string",
       "format": "password",
       "default": "",
-      "title": "API Key",
-      "description": "Optional, from api.nasa.gov. Without one a shared demo key is used, which is often enough.",
+      "title": "API key",
+      "description": "Optional, a NASA key from api.nasa.gov. Without one a shared demo key is used, which is often enough.",
       "show_if": {"source": ["apod"]}
     },
     "interval": {
       "type": "integer",
       "default": 60,
-      "title": "Seconds per Photo",
-      "description": "How long each photo is shown. Unsplash: 90 at least. The pictures of the day change once a day."
+      "title": "Time per photo",
+      "description": "How long each photo is shown. Unsplash: 90 at least. The pictures of the day change once a day.",
+      "unit": "s"
     },
     "fit": {
       "type": "string",
       "default": "contain",
       "enum": ["contain", "cover"],
       "enum_titles": ["Whole photo", "Fill the screen"],
-      "title": "Photo Size",
+      "title": "Photo size",
       "description": "Whole photo: all of it, with black (glass) beside it. Fill the screen: fills the screen (in Background) or the box, the edges cropped."
     },
     "vignette": {
       "type": "boolean",
       "default": false,
-      "title": "Darker Edges",
-      "description": "Darkens the photo towards the edges, so the other modules' text stays readable over it. Brightness: the Opacity setting below."
-    }
+      "title": "Darker edges",
+      "description": "Darkens the photo towards the edges, so the other modules' text stays readable over it. Brightness: the opacity setting."
+    },
+    "width_percent": {"default": 40}
   },
   "required": ["source"]
 }
