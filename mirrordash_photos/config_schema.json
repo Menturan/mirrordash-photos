@@ -2,6 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Photos",
   "requires_mirrordash": "0.21",
+  "preferred_width": "45rem",
   "description": "A slideshow of your own photos, Immich, Unsplash, Pexels, or NASA's or Wikimedia's picture of the day.",
   "help": "Put it in Background to show it behind the other modules.",
   "type": "object",
@@ -137,8 +138,7 @@
       "default": false,
       "title": "Darker edges",
       "description": "Darkens the photo towards the edges, so the other modules' text stays readable over it. Brightness: the opacity setting."
-    },
-    "width_percent": {"default": 40}
+    }
   },
   "required": ["source"]
 }

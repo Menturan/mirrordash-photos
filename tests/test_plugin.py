@@ -192,3 +192,9 @@ async def test_fill_the_screen_is_a_choice_and_the_whole_photo_the_default(tmp_p
     upload(tmp_path, "2026-01-02_a.jpg")
     assert (await make_module(tmp_path).render())["fill"] is False
     assert (await make_module(tmp_path, fit="cover").render())["fill"] is True
+
+
+def test_the_card_width_is_a_preferred_width_not_a_module_default():
+    schema = json.loads((Path(plugin.__file__).parent / "config_schema.json").read_text())
+    assert schema["preferred_width"] == "45rem"
+    assert "width_percent" not in schema["properties"] and "height_percent" not in schema["properties"]
